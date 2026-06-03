@@ -27,7 +27,9 @@ try {
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.get('/',(req,res)=>{
+res.json({message:"Hello coba backend untuk vercel"});
+});
 app.use('/api/bukus', Buku);
 app.use('/api/mahasiswas', Mahasiswas);
 app.use('/api/prodis', Prodis);
