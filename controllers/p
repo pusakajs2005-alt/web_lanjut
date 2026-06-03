@@ -1,0 +1,87 @@
+export const updatePengembalian = async (req, res) => {
+  try {
+    const details = await detailPinjams.findAll({
+      where: { pinjam_id: req.params.id },
+    });
+
+    if (details.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "Data peminjaman tidak ditemukan!" });
+    }
+
+    let SudahPernah = false;
+
+    for (const detail of details) {
+      const updated = await detailPinjams.update(
+        { status: "0" },
+        {
+          where: {
+            id: detail.id,
+            status: "1",
+          },
+        },
+      );
+
+      if (updated[0] === 0) {
+        SudahPernah = true;
+        continue;
+      }
+
+      await detailPinjams.update({ status: "0" }, { where: { id: detail.id } });
+
+      await Buku.increment("jumlah", {
+        by: detail.jml_pinjam,
+        where: { kode_buku: detail.buku_id },
+      });
+    }
+
+    if (SudahPernah) {
+      return res.status(400).json({
+        message: "buku dalam nota ini sudah pernah dikembalikan!",
+      });
+    }
+
+    res.status(200).json({
+      message: "Buku berhasil dikembalikan!",
+      data: details,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+//laporan
+const batasKembali = new Date(
+  pinjam.tanggal_kembali
+);
+
+const tanggalPengembalian = new Date(
+  data[i].updatedAt
+);
+
+batasKembali.setHours(0,0,0,0);
+tanggalPengembalian.setHours(0,0,0,0);
+
+const selisihHari =
+  (tanggalPengembalian - batasKembali) /
+  (1000 * 60 * 60 * 24);
+
+data[i].dataValues.jumlah_hari_terlambat =
+  selisihHari > 0 ? selisihHari : 0;
+
+// realtime
+const batasKembali = new Date(
+    pinjam.tanggal_kembali
+  );
+
+  const hariIni = new Date();
+
+  batasKembali.setHours(0, 0, 0, 0);
+  hariIni.setHours(0, 0, 0, 0);
+
+  const selisihHari =
+    (hariIni - batasKembali) /
+    (1000 * 60 * 60 * 24);
+
+  data[i].dataValues.jumlah_hari_terlambat =
+    selisihHari > 0 ? selisihHari : 0;
