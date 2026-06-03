@@ -8,12 +8,12 @@ import {
     deleteBuku
 } from "../controllers/buku.controllers.js";
 
-import { authenticateToken } from "../middleware/VerifyTokens.js";
+/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
  const router = express.Router();
- router.get("/", authenticateToken, getAllProducts);
- router.post("/", authenticateToken, tambahbukubaru);
- router.get("/:id", authenticateToken, cariBukuByID);
- router.patch("/:id", authenticateToken, updateBuku);
- router.delete("/:id", authenticateToken, deleteBuku);
+ router.get("/",  getAllProducts);
+ router.post("/",  tambahbukubaru);
+ router.get("/:id",  cariBukuByID);
+ router.patch("/:id",  updateBuku);
+ router.delete("/:id",  deleteBuku);
 
 export default router;
