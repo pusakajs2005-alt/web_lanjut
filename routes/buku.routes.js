@@ -8,7 +8,7 @@ import {
     deleteBuku
 } from "../controllers/buku.controllers.js";
 
-import { authenticateToken } from "../middleware/VerifyTokens.js";
+/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
  const router = express.Router();
  router.get("/",  getAllProducts);
  router.post("/",  tambahbukubaru);
