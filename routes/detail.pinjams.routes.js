@@ -9,7 +9,7 @@ import {
     
 } from "../controllers/detail.pinjams.controller.js";
 
-import { authenticateToken } from "../middleware/VerifyTokens.js";
+/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
 const router = express.Router();
 router.get("/",  getAlldetailPinjam);
 router.post("/",  tambahdetailbaru);
