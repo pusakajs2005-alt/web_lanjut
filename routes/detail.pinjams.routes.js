@@ -11,12 +11,12 @@ import {
 
 import { authenticateToken } from "../middleware/VerifyTokens.js";
 const router = express.Router();
-router.get("/", authenticateToken, getAlldetailPinjam);
-router.post("/", authenticateToken, tambahdetailbaru);
-router.get("/pinjam/:id", authenticateToken, caridetailPinjamByid);
-router.get("/buku/:id", authenticateToken, caridetailPinjamsByid);
+router.get("/",  getAlldetailPinjam);
+router.post("/",  tambahdetailbaru);
+router.get("/pinjam/:id",  caridetailPinjamByid);
+router.get("/buku/:id",  caridetailPinjamsByid);
 //router.patch("/:id", updatedetailPinjam);
-router.delete("/:id", authenticateToken, deletedetailPinjam);
+router.delete("/:id",  deletedetailPinjam);
 
 
 
