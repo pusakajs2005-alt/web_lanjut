@@ -53,7 +53,7 @@ const tanggalPengembalian = new Date(
 batasKembali.setHours(0,0,0,0);
 tanggalPengembalian.setHours(0,0,0,0);
 
-const selisihHari =
+const selisihBulan =
   (tanggalPengembalian - batasKembali) /
   (1000 * 60 * 60 * 24 * 30);
 
