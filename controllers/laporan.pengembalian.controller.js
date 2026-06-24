@@ -55,10 +55,10 @@ tanggalPengembalian.setHours(0,0,0,0);
 
 const selisihHari =
   (tanggalPengembalian - batasKembali) /
-  (1000 * 60 * 60 * 24 );
+  (1000 * 60 * 60 * 24 * 365);
 
 data[i].dataValues.jumlah_bulan_terlambat =
-  selisihBulan > 0 ? selisihHari + " hari" : "0 hari";
+  selisihBulan > 0 ? selisihHari + " tahun" : "0 tahun";
 }
 
     res.status(200).json(data);
