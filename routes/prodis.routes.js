@@ -7,12 +7,12 @@ import {
     deleteProdi
 } from "../controllers/prodis.controllers.js";
 
-/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
+import { authenticateToken } from "../middleware/VerifyTokens.js";
 const router = express.Router();
-router.get("/",  getAllProdi);
-router.post("/",  tambahprodisbaru);
-router.get("/:id",  cariProdiByID);
-router.patch("/:id",  updateProdi);
-router.delete("/:id",  deleteProdi);
+router.get("/", authenticateToken, getAllProdi);
+router.post("/", authenticateToken, tambahprodisbaru);
+router.get("/:id", authenticateToken, cariProdiByID);
+router.patch("/:id", authenticateToken, updateProdi);
+router.delete("/:id", authenticateToken, deleteProdi);
 
 export default router;
