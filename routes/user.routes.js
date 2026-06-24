@@ -14,7 +14,7 @@ const routerUser = express.Router();
 routerUser.post("/", tambahuser);
 routerUser.get("/", getAllUser);
 routerUser.post("/login", login);
-router.delete("/:id", authenticateToken, deleteUser);
+router.delete("/:id", deleteUser);
 
 routerUser.get("/dashboard", authenticateToken, (req, res) => {
   res.send("Welcome to the dashboard!");
