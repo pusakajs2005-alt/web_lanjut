@@ -6,9 +6,9 @@ import {
   getBukuDipinjam
 } from "../controllers/pengembalian.buku.controller.js";
 
-/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
+import { authenticateToken } from "../middleware/VerifyTokens.js";
 const router = express.Router();
-router.get("/pinjam/:id",  getBukuDipinjam);
-router.post("/kembali",  pengembalianBuku);
-router.post("/kembali/:id",  pengembalianSemua);
+router.get("/pinjam/:id", authenticateToken, getBukuDipinjam);
+router.post("/kembali", authenticateToken, pengembalianBuku);
+router.post("/kembali/:id", authenticateToken, pengembalianSemua);
 export default router;
