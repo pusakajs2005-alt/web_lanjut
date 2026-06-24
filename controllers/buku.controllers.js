@@ -42,7 +42,7 @@ export const updateBuku = async (req, res) => {
   try {
     const products = await Buku.update(req.body, {
       where: {
-        id: req.params.id
+        kode_buku: req.params.id
       }
     });
     res.json({ "message": "Buku berhasil update" });
@@ -55,7 +55,7 @@ export const deleteBuku = async (req, res) => {
   try {
     const products = await Buku.destroy({
       where: {
-        id: req.params.id
+        kode_buku: req.params.id
       }
     });
     res.json({ "message": "Buku berhasil dihapus" });
