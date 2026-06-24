@@ -55,7 +55,7 @@ tanggalPengembalian.setHours(0,0,0,0);
 
 const selisihHari =
   (tanggalPengembalian - batasKembali) /
-  (1000 * 60 * 60 * 24);
+  (1000 * 60 * 60 * 24 * 30);
 
 data[i].dataValues.jumlah_hari_terlambat =
   selisihHari > 0 ? selisihHari + " hari"
