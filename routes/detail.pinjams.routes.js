@@ -9,14 +9,14 @@ import {
     
 } from "../controllers/detail.pinjams.controller.js";
 
-/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
+import { authenticateToken } from "../middleware/VerifyTokens.js";
 const router = express.Router();
-router.get("/",  getAlldetailPinjam);
-router.post("/",  tambahdetailbaru);
-router.get("/pinjam/:id",  caridetailPinjamByid);
-router.get("/buku/:id",  caridetailPinjamsByid);
+router.get("/", authenticateToken, getAlldetailPinjam);
+router.post("/", authenticateToken, tambahdetailbaru);
+router.get("/pinjam/:id", authenticateToken, caridetailPinjamByid);
+router.get("/buku/:id", authenticateToken, caridetailPinjamsByid);
 //router.patch("/:id", updatedetailPinjam);
-router.delete("/:id",  deletedetailPinjam);
+router.delete("/:id", authenticateToken, deletedetailPinjam);
 
 
 
