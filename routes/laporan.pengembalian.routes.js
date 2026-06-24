@@ -4,8 +4,8 @@ import {
   laporanPengembalian
 } from "../controllers/laporan.pengembalian.controller.js";
 
-/*import { authenticateToken } from "../middleware/VerifyTokens.js";*/
+import { authenticateToken } from "../middleware/VerifyTokens.js";
 const router = express.Router();
-router.get("/",  laporanPengembalian);
+router.get("/", authenticateToken, laporanPengembalian);
 
 export default router;
