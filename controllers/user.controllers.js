@@ -69,3 +69,15 @@ export const login = async (req, res) => {
 
     }
 };
+export const deleteUser = async (req, res) => {
+  try {
+    const products = await Users.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    res.json({ "message": "Buku berhasil dihapus" });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
