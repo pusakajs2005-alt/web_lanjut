@@ -76,7 +76,7 @@ export const deleteUser = async (req, res) => {
         id: req.params.id
       }
     });
-    res.json({ "message": "Buku berhasil dihapus" });
+    res.json({ "message": "User berhasil dihapus" });
   } catch (error) {
     res.json({ message: error.message });
   }
